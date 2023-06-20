@@ -1,0 +1,84 @@
+def Vehiculo():
+    tipoVehiculo=input("Ingrese el tipo de Vehiculo: ")
+    patenteVehiculo=input("Ingrese patente del Vehiculo: ")
+    marcaVehiculo=input("Ingrese marca del Vehiculo: ")
+    precioVehiculo=int(input("Ingrese el precio del Vehiculo: "))
+    multas=[]
+    while True:
+        valorMulta=float(input("Ingrese el valor de la multa(0 para terminar): "))
+        if valorMulta==0:
+            break
+        fecha=input("Ingrese la fecha de la Multa: ")
+        multas.append({"valorMulta": valorMulta, "fecha": fecha})
+
+    fechaRegistro=input("Ingrese la fecha cuando registro el Vehiculo: ")
+    nombreDueño=input("Ingrese el nombre del dueño del Vehiculo: ")
+
+    if len(patenteVehiculo)!=6:
+        print("La patente del Vehiculo debe tener 6 caracteres")
+        return
+    if len(marcaVehiculo)<2 or len(marcaVehiculo)>15:
+        print("La marca del Vehiculo debe tener de 2 a 15 caracteres")
+        return
+    if len(precioVehiculo)<=6000000:
+        print("El valor del Vehiculo debe ser mayor a $6.000.000")
+        return
+
+    print("\nDatos del Vehiculo guardados:")
+    print("Tipo de Vehiculo:", tipoVehiculo)
+    print("Patente de Vehiculo:", patenteVehiculo)
+    print("Marca de Vehiculo:", marcaVehiculo)
+    print("Multas:", multas)
+    print("Fecha de Registro:", fecha)
+    print("Nombre del dueño:", nombreDueño)
+
+def buscarVehiculo():
+    patenteVehiculo=input("Ingrese la patente del Vehiculo que desea buscar: ")
+    print("\nInformacion del vehiculo con patente", patenteVehiculo, ":")
+    print("Tipo: Hatchback")
+    print("Marca: Nissan")
+    print("Precio: $10.500.000")
+    print("Multas: [{'valorMulta': 150000, 'fecha': '2022-10-02'}]")
+    print("Fecha de registro: 2020-06-30")
+    print("Nombre del dueño: Handry Oporto")
+
+def Certificados():
+    emisionContaminantes=round(random.uniform(1500, 3500),2)
+    anotacionesVigentes=round(random.uniform(1500, 3500),2)
+    multas=round(random.uniform(1500, 3500),2)
+
+    patenteVehiculo=input("Ingrese la patente del vehiculo: ")
+    nombreDueño=input("Ingrese el nombre del dueño: ")
+
+    print("\nCertificados de", nombreDueño, "con patente", patenteVehiculo, ":")
+    print("Certificado de Emision de contaminantes: $", emisionContaminantes)
+    print("Certificado de Anotaciones vigentes: $", anotacionesVigentes)
+    print("Certificado de Multas: $", multas)
+
+def main():
+    print("--------------------------------------")
+    print("Bienvenido a la Automotora Auto Seguro")
+    print("--------------------------------------")
+    print("Elija una opcion del Menu")
+    print("[1]Grabar el Vehiculo")
+    print("[2]Buscar el Vehiculo")
+    print("[3]Imprimir Certificados")
+    print("[4]Salir")
+
+    while True:
+        opcion=input("\nSeleccione una opcion del menu (1-4): ")
+
+        if opcion == "1":
+            Vehiculo()
+        elif opcion == "2":
+            buscarVehiculo()
+        elif opcion == "3":
+            Certificados()
+        elif opcion == "4":
+            print("\nGracias por ocupar nuestro servicio")
+            break
+        else:
+            print("Opcion invalida. Vuelva a intentarlo")
+
+if __name__ == "__main__":
+    main()   
